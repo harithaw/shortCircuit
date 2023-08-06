@@ -207,8 +207,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 540391321}
-        m_TargetAssemblyTypeName: DeleteButtonScript, Assembly-CSharp
-        m_MethodName: OnDeleteButtonClick
+        m_TargetAssemblyTypeName: BtnManageScript, Assembly-CSharp
+        m_MethodName: OnUndoButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 540391322}
   - component: {fileID: 540391321}
   m_Layer: 0
-  m_Name: DBtn
+  m_Name: BtnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
