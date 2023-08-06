@@ -22,6 +22,7 @@ public class BreadBoardManager : MonoBehaviour
     public Material lineMaterial;
 
     private List<LineRenderer> lines = new List<LineRenderer>();
+    private Stack<LineRenderer> undoStack = new Stack<LineRenderer>();
 
     // Start is called before the first frame update
     void Start()
@@ -116,6 +117,8 @@ public class BreadBoardManager : MonoBehaviour
         currentLine.material = lineMaterial;
 
         lines.Add(currentLine);
+
+        undoStack.Push(currentLine);
     }
 
     private void updateLinePosition(Vector2Int endCell)
@@ -151,6 +154,16 @@ public class BreadBoardManager : MonoBehaviour
             Destroy(selectedLine.gameObject);
             lines.Remove(selectedLine);
             selectedLine = null;
+        }
+    }
+
+    public void Undo()
+    {
+        if (undoStack.Count > 0)
+        {
+            LineRenderer lastLine = undoStack.Pop();
+            lines.Remove(lastLine);
+            Destroy(lastLine.gameObject);
         }
     }
 }

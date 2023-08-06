@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeleteButtonScript : MonoBehaviour
+public class BtnManageScript : MonoBehaviour
 {
 
     public BreadBoardManager breadboard;
 
-    public void OnDeleteButtonClick()
+    public void OnUndoButtonClick()
     {
-        breadboard.deleteSelectedLine();
+        breadboard.Undo();
     }
 }
