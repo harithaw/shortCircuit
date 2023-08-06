@@ -23,6 +23,6 @@ public class PlayButtonHome : MonoBehaviour
 
     public void GotoSampleScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
