@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     {
         btns[0] = btnLevel1;
 
-        for (int i = 0; i < noOfLevels; i++)
+        for (int i = 1; i < noOfLevels; i++)
         {
             
 
