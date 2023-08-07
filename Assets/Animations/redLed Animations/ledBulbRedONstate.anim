@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: batteryForward
+  m_Name: ledBulbRedONstate
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 3027626886666372193, guid: 82a34c342b66b3748969eb175f3cd193, type: 3}
-    - time: 0.033333335
-      value: {fileID: -2582336204104719491, guid: 82a34c342b66b3748969eb175f3cd193, type: 3}
-    - time: 0.06666667
-      value: {fileID: -4154491459302175711, guid: 82a34c342b66b3748969eb175f3cd193, type: 3}
-    - time: 0.1
-      value: {fileID: 272355257646472544, guid: 82a34c342b66b3748969eb175f3cd193, type: 3}
+      value: {fileID: -537784086309627701, guid: 42a90ef624a5f1a4dac6b6183c46f3f4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,16 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 3027626886666372193, guid: 82a34c342b66b3748969eb175f3cd193, type: 3}
-    - {fileID: -2582336204104719491, guid: 82a34c342b66b3748969eb175f3cd193, type: 3}
-    - {fileID: -4154491459302175711, guid: 82a34c342b66b3748969eb175f3cd193, type: 3}
-    - {fileID: 272355257646472544, guid: 82a34c342b66b3748969eb175f3cd193, type: 3}
+    - {fileID: -537784086309627701, guid: 42a90ef624a5f1a4dac6b6183c46f3f4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.11666667
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
