@@ -40,7 +40,7 @@ public class BreadBoardManager : MonoBehaviour
             Vector2Int clickedCell = new Vector2Int(Mathf.FloorToInt(mousePos.x / cellSize),
                 Mathf.FloorToInt(mousePos.y / cellSize));
 
-            if(touch.phase==TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began)
             {
                 if (isValidCell(clickedCell))
                 {
@@ -52,10 +52,10 @@ public class BreadBoardManager : MonoBehaviour
                 endLine(clickedCell);
                 currentLine = null;
             }
-            
+
         }
 
-        if(Input.touchCount > 0 && currentLine != null)
+        if (Input.touchCount > 0 && currentLine != null)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -66,16 +66,16 @@ public class BreadBoardManager : MonoBehaviour
             updateLinePosition(currentCell);
         }
 
-        if(Input.touchCount>0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             RaycastHit2D hit = Physics2D.Raycast(touchPos, Vector2.zero);
 
-            if(hit.collider != null)
+            if (hit.collider != null)
             {
                 LineRenderer selectedLineRenderer = hit.collider.GetComponent<LineRenderer>();
 
-                if(selectedLineRenderer != null)
+                if (selectedLineRenderer != null)
                 {
                     selectLine(selectedLineRenderer);
                 }
@@ -87,7 +87,7 @@ public class BreadBoardManager : MonoBehaviour
     {
         X = transform.position.x + rows;
         Y = transform.position.y + cols;
-        for (int i= (int)transform.position.x; i < X; i++)
+        for (int i = (int)transform.position.x; i < X; i++)
         {
             for (int y = (int)transform.position.y; y < Y; y++)
             {
@@ -136,7 +136,7 @@ public class BreadBoardManager : MonoBehaviour
     public void clearAllLines()
     {
         LineRenderer[] lines = FindObjectsOfType<LineRenderer>();
-        foreach(LineRenderer line in lines)
+        foreach (LineRenderer line in lines)
         {
             Destroy(line.gameObject);
         }
@@ -149,7 +149,7 @@ public class BreadBoardManager : MonoBehaviour
 
     public void deleteSelectedLine()
     {
-        if(selectedLine != null)
+        if (selectedLine != null)
         {
             Destroy(selectedLine.gameObject);
             lines.Remove(selectedLine);
