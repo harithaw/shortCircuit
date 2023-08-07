@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/dasuntemp.unity
     guid: c813350efabc37c43aef1a149bed5628
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Level01.unity
+    guid: 7dad50f355d1f0842b0c2e30466d7571
   m_configObjects: {}
