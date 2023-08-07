@@ -24,9 +24,6 @@ public class BreadBoardManager : MonoBehaviour
     private List<LineRenderer> lines = new List<LineRenderer>();
     private Stack<LineRenderer> undoStack = new Stack<LineRenderer>();
 
-    private bool isDrawingXAxis = false;
-    private bool isDrawingYAxis = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -47,32 +44,13 @@ public class BreadBoardManager : MonoBehaviour
             {
                 if (isValidCell(clickedCell))
                 {
-                    if (!isDrawingXAxis && !isDrawingYAxis)
-                    {
-                        if (touch.position.x < Screen.width * 0.5f)
-                        {
-                            isDrawingXAxis = true;
-                        }
-                        else
-                        {
-                            isDrawingYAxis = true;
-                        }
-                        startNewLine(clickedCell);
-                    }
-                        
+                    startNewLine(clickedCell);
                 }
             }
             else if (touch.phase == TouchPhase.Ended)
             {
-                if (isDrawingXAxis || isDrawingYAxis)
-                {
-                    endLine(clickedCell);
-                    currentLine = null;
-
-                    isDrawingXAxis = false;
-                    isDrawingYAxis = false;
-                }
-                    
+                endLine(clickedCell);
+                currentLine = null;
             }
 
         }
@@ -129,101 +107,30 @@ public class BreadBoardManager : MonoBehaviour
 
     private void startNewLine(Vector2Int startCell)
     {
-        if (isDrawingXAxis || isDrawingYAxis)
-        {
-            currentLine = Instantiate(lineRenderPrefab);
-            currentLine.positionCount = 2;
+        currentLine = Instantiate(lineRenderPrefab);
+        currentLine.positionCount = 2;
 
-            Vector3 startPos = new Vector3(startCell.x * cellSize, startCell.y * cellSize, -1f);
-            currentLine.SetPosition(0, startPos);
-            currentLine.SetPosition(1, startPos);
+        Vector3 startPos = new Vector3(startCell.x * cellSize, startCell.y * cellSize, -1f);
+        currentLine.SetPosition(0, startPos);
+        currentLine.SetPosition(1, startPos);
 
-            currentLine.material = lineMaterial;
+        currentLine.material = lineMaterial;
 
-            lines.Add(currentLine);
+        lines.Add(currentLine);
 
-            undoStack.Push(currentLine);
-        }
-           
-        
+        undoStack.Push(currentLine);
     }
 
     private void updateLinePosition(Vector2Int endCell)
     {
-        if (isDrawingXAxis || isDrawingYAxis)
-        {
-            Vector2Int startCell = new Vector2Int(
-            Mathf.FloorToInt(currentLine.GetPosition(0).x / cellSize),
-            Mathf.FloorToInt(currentLine.GetPosition(0).y / cellSize)
-        );
-
-            
-            int xDiff = Mathf.Abs(endCell.x - startCell.x);
-            int yDiff = Mathf.Abs(endCell.y - startCell.y);
-
-            
-            if (isDrawingXAxis)
-            {
-                endCell.y = startCell.y; 
-            }
-            else if (isDrawingYAxis)
-            {
-                endCell.x = startCell.x; 
-            }
-            else
-            {
-                
-                if (xDiff > yDiff)
-                {
-                    endCell.y = startCell.y;
-                }
-                else
-                {
-                    endCell.x = startCell.x;
-                }
-            }
-            Vector3 endPos = new Vector3(endCell.x * cellSize, endCell.y * cellSize, -1f);
-            currentLine.SetPosition(1, endPos);
-        }
+        Vector3 endPos = new Vector3(endCell.x * cellSize, endCell.y * cellSize, -1f);
+        currentLine.SetPosition(1, endPos);
     }
 
     private void endLine(Vector2Int endCell)
     {
-        if (isDrawingXAxis || isDrawingYAxis)
-        {
-            Vector2Int startCell = new Vector2Int(
-                Mathf.FloorToInt(currentLine.GetPosition(0).x / cellSize),
-                Mathf.FloorToInt(currentLine.GetPosition(0).y / cellSize)
-            );
-
-            
-            int xDiff = Mathf.Abs(endCell.x - startCell.x);
-            int yDiff = Mathf.Abs(endCell.y - startCell.y);
-
-            
-            if (isDrawingXAxis)
-            {
-                endCell.y = startCell.y; 
-            }
-            else if (isDrawingYAxis)
-            {
-                endCell.x = startCell.x; 
-            }
-            else
-            {
-                if (xDiff > yDiff)
-                {
-                    endCell.y = startCell.y;
-                }
-                else
-                {
-                    endCell.x = startCell.x;
-                }
-            }
-
-            Vector3 endPos = new Vector3(endCell.x * cellSize, endCell.y * cellSize, -1f);
-            currentLine.SetPosition(1, endPos);
-        }
+        Vector3 endPos = new Vector3(endCell.x * cellSize, endCell.y * cellSize, -1f);
+        currentLine.SetPosition(1, endPos);
     }
 
     public void clearAllLines()
