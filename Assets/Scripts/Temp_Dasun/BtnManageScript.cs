@@ -15,8 +15,8 @@ public class BtnManageScript : MonoBehaviour
     }
 
     public void GotoSampleScene()
-    {
-        SceneManager.LoadScene(1);
+    {   
+        SceneManager.LoadScene(0);
     }
 
     public void BackToMenu()
