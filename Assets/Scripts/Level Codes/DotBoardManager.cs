@@ -24,6 +24,8 @@ public class DotBoardManager : MonoBehaviour
     private List<LineRenderer> lines = new List<LineRenderer>();
     private Stack<LineRenderer> undoStack = new Stack<LineRenderer>();
 
+    public LevelController levelController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,6 +121,11 @@ public class DotBoardManager : MonoBehaviour
         lines.Add(currentLine);
 
         undoStack.Push(currentLine);
+
+        currentLine.gameObject.tag = "line";
+        levelController.lineStates.Add(false);
+
+        currentLine.gameObject.transform.SetParent(levelController.gameObject.transform);
     }
 
     private void updateLinePosition(Vector2Int endCell)
@@ -196,12 +203,25 @@ public class DotBoardManager : MonoBehaviour
 
     public void GenerateMeshCollider(LineRenderer Line)
     {
+        CollisionController collisionController = Line.gameObject.GetComponent<CollisionController>();
+        Rigidbody rigidbody = Line.gameObject.GetComponent<Rigidbody>();
         MeshCollider collider = Line.gameObject.GetComponent<MeshCollider>();
 
         if (collider == null)
         {
             collider = Line.gameObject.AddComponent<MeshCollider>();
             collider.convex = true;
+        }
+
+        if (rigidbody == null)
+        {
+            rigidbody = Line.gameObject.AddComponent<Rigidbody>();
+            rigidbody.useGravity = false;
+        }
+
+        if (collisionController == null)
+        {
+            collisionController = Line.gameObject.AddComponent<CollisionController>();
         }
 
         Mesh mesh = new Mesh();
