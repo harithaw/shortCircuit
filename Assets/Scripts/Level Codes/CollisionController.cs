@@ -14,5 +14,9 @@ public class CollisionController : MonoBehaviour
         {
             contacts.Add(collision.gameObject);
         }
+        if(!collision.gameObject.CompareTag("line") && gameObject.tag == "line")
+        {
+            gameObject.tag = collision.gameObject.tag;
+        }
     }
 }

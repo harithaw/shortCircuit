@@ -123,7 +123,6 @@ public class DotBoardManager : MonoBehaviour
         undoStack.Push(currentLine);
 
         currentLine.gameObject.tag = "line";
-        levelController.lineStates.Add(false);
 
         currentLine.gameObject.transform.SetParent(levelController.gameObject.transform);
     }

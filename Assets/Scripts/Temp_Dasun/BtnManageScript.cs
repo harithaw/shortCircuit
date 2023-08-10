@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class BtnManageScript : MonoBehaviour
 {
     public Button b1;
-    public BreadBoardManager breadboard;
+    public DotBoardManager breadboard;
 
     public void OnUndoButtonClick()
     {
@@ -16,7 +16,7 @@ public class BtnManageScript : MonoBehaviour
 
     public void GotoSampleScene()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
 
     public void BackToMenu()

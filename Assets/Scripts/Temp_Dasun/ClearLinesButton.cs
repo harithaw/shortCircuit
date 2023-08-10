@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ClearLinesButton : MonoBehaviour
 {
-    public BreadBoardManager breadboard;
+    public DotBoardManager breadboard;
 
 
     public void OnClearLinesButtonClick()
