@@ -157,11 +157,7 @@ public class BreadBoardManager : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream:Assets/Scripts/Temp_Dasun/BreadBoardManager.cs
     public void Undo()
-=======
-    public void undo()
->>>>>>> Stashed changes:Assets/BreadBoardManager.cs
     {
         if (undoStack.Count > 0)
         {
@@ -170,7 +166,6 @@ public class BreadBoardManager : MonoBehaviour
             Destroy(lastLine.gameObject);
         }
     }
-<<<<<<< Updated upstream:Assets/Scripts/Temp_Dasun/BreadBoardManager.cs
 
     public bool AreCellsConnected(int startRow, int startCol, int endRow, int endCol)
     {
@@ -197,6 +192,4 @@ public class BreadBoardManager : MonoBehaviour
         return true;
         //return AreCellsConnected(1, 1, 1, 5);
     }
-=======
->>>>>>> Stashed changes:Assets/BreadBoardManager.cs
 }
