@@ -16,11 +16,11 @@ public class BtnManageScript : MonoBehaviour
 
     public void GotoSampleScene()
     {   
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }
